@@ -1,8 +1,7 @@
-import subprocess, json, sys
+import subprocess, os, sys
 
 def startProcess(path):
-    proc = subprocess.Popen([f"cd {path} && yarn start"], stdout=subprocess.PIPE, shell=True)
-    (out, err) = proc.communicate()
+    os.system(f"cd {path} && yarn start")
     
 
 def isRunning(port):
