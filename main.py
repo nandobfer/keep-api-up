@@ -8,3 +8,4 @@ def checkPort(port):
     print(str(out))
     
 port = sys.argv[1]
+checkPort(port)
