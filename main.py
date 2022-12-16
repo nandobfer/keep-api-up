@@ -2,6 +2,8 @@ import subprocess, os, sys
 
 def startProcess(path):
     os.chdir(path)
+    print(path)
+    print(os.getcwd())
     os.system(f"screen -m -d -S api yarn start")
 
 def isRunning(port):
