@@ -19,7 +19,7 @@ def run():
     path = sys.argv[2]
     
     if isRunning(port):
-        print(f"A process ir running on port {port}")
+        print(f"A process is running on port {port}")
         return True
     else:
         print(f"There is no process running on port {port}. Starting now")
