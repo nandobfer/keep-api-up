@@ -5,8 +5,6 @@ def checkPort(port):
     proc = subprocess.Popen([f"lsof -i:{port}"], stdout=subprocess.PIPE, shell=True)
     print()
     (out, err) = proc.communicate()
-    print(out)
-    
-    
+    print(str(out))
     
 port = sys.argv[1]
