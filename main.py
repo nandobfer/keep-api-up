@@ -1,11 +1,32 @@
 import subprocess, json, sys
 
-
-def checkPort(port):
-    proc = subprocess.Popen([f"lsof -i:{port}"], stdout=subprocess.PIPE, shell=True)
-    print()
+def startProcess(path):
+    proc = subprocess.Popen([f"cd {path} && yarn start"], stdout=subprocess.PIPE, shell=True)
     (out, err) = proc.communicate()
-    print(out)
     
-port = sys.argv[1]
-checkPort(port)
+
+def isRunning(port):
+    proc = subprocess.Popen([f"lsof -i:{port}"], stdout=subprocess.PIPE, shell=True)
+    (out, err) = proc.communicate()
+    if out:
+        return True
+        
+def run():
+    if len(sys.argv) <= 2:
+        print("First param: port number")
+        print("second param: path to api")
+        return False
+        
+    port = sys.argv[1]
+    path = sys.argv[2]
+    
+    if isRunning(port):
+        print(f"A process ir running on port {port}")
+        return True
+    else:
+        print(f"There is no process running on port {port}. Starting now")
+        startProcess(path)
+
+run()
+    
+    
