@@ -2,9 +2,7 @@ import subprocess, os, sys
 
 def startProcess(path):
     os.chdir(path)
-    print(path)
-    print(os.getcwd())
-    os.system(f"screen -m -d -S api yarn start")
+    os.system(f"yarn start")
 
 def isRunning(port):
     proc = subprocess.Popen([f"lsof -i:{port}"], stdout=subprocess.PIPE, shell=True)
